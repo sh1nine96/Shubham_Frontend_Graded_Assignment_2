@@ -101,11 +101,12 @@ const checkResumes = () => {
 // validate user at the top and redirect to login if user not found in local storage
 validateUser();
 
-// Data.json was uploaded to npoint as browser was not allowing to read a local file automatically
-//fetch('https://api.npoint.io/61a8966d1dd6666ba656')
+// Data.json was uploaded to npoint as browser was not allowing to read a local file automatically, but both options are working perfectly fine. One has been commented, you can check that too by commenting this and uncommenting the next one
 
-//with the following location, it is able to read as well
-fetch("../resources/data/Data.json")
+fetch("https://api.npoint.io/61a8966d1dd6666ba656")
+  //with the following location, it is able to read as well
+
+  // fetch("../resources/data/Data.json") // this is also working fine
   .then((response) => response.json())
   .then((respData) => {
     loader.style.display = "none";
@@ -117,7 +118,7 @@ fetch("../resources/data/Data.json")
   })
   .catch((error) => {
     alert(
-      "Page interrupted or Unable to load file from endpoint. Loading the data from local."
+      "Page interrupted or Unable to load file from npoint. Loading the data from local."
     );
     loader.style.display = "none";
     resumeData = data;
